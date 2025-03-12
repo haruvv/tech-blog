@@ -1,7 +1,4 @@
-"use server";
-
 import { createClient } from "microcms-js-sdk";
-import { cache } from "react";
 
 // ブログ記事の型定義
 export type Blog = {
@@ -13,7 +10,7 @@ export type Blog = {
 };
 
 // レスポンスの型定義
-type BlogResponse = {
+export type BlogResponse = {
   contents: Blog[];
   totalCount: number;
   offset: number;
@@ -21,13 +18,13 @@ type BlogResponse = {
 };
 
 // microCMSクライアントの作成
-const client = createClient({
+export const client = createClient({
   serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN || "",
   apiKey: process.env.MICROCMS_API_KEY || "",
 });
 
-// ブログ一覧を取得するServerAction（キャッシュ対応）
-export const getBlogs = cache(async (offset = 0, limit = 10) => {
+// ブログ一覧を取得する関数
+export async function getBlogs(offset = 0, limit = 10) {
   try {
     const response = await client.get<BlogResponse>({
       endpoint: "blogs",
@@ -51,10 +48,10 @@ export const getBlogs = cache(async (offset = 0, limit = 10) => {
       totalCount: 0,
     };
   }
-});
+}
 
-// 特定のブログ記事を取得するServerAction（キャッシュ対応）
-export const getBlogById = cache(async (id: string) => {
+// 特定のブログ記事を取得する関数
+export async function getBlogById(id: string) {
   try {
     const blog = await client.get<Blog>({
       endpoint: "blogs",
@@ -69,6 +66,6 @@ export const getBlogById = cache(async (id: string) => {
       id: "not-found",
       title: "記事が見つかりませんでした",
       content: "<p>お探しの記事は見つかりませんでした。</p>",
-    };
+    } as Blog;
   }
-});
+}

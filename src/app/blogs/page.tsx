@@ -1,4 +1,3 @@
-import { getBlogs } from "./actions";
 import Link from "next/link";
 import { Container } from "@/components/common/Container";
 import { Button } from "@/components/ui/button";
@@ -9,6 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { getBlogs } from "@/lib/microcms";
 
 export const dynamic = "force-static";
 export const revalidate = 3600; // 1時間ごとに再検証

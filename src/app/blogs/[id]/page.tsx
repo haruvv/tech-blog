@@ -1,9 +1,9 @@
-import { getBlogById, getBlogs } from "../actions";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Container } from "@/components/common/Container";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import { getBlogById, getBlogs } from "@/lib/microcms";
 
 // 静的生成のための設定
 export const dynamic = "force-static";

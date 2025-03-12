@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/common/Container";
-import { getBlogs } from "./blogs/actions";
+import { getBlogs } from "@/lib/microcms";
+
+export const dynamic = "force-static";
+export const revalidate = 3600; // 1時間ごとに再検証
 
 export default async function Home() {
   // 最新の3件の記事を取得

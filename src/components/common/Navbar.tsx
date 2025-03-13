@@ -1,25 +1,24 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
-export function Navbar() {
+export const Navbar = () => {
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center">
-        <div className="mr-4 flex">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
-            <span className="text-xl font-bold tracking-tight">TechBlog</span>
+    <nav className="sticky top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b">
+      <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+        <Link href="/" className="text-xl font-bold">
+          Tech Blog
+        </Link>
+        <div className="flex items-center gap-4">
+          <Link href="/blogs">
+            <Button variant="ghost">Blog</Button>
+          </Link>
+          <Link href="/about">
+            <Button variant="ghost">About</Button>
           </Link>
         </div>
-        <div className="flex flex-1 items-center space-x-4 sm:justify-end">
-          <nav className="flex items-center space-x-2">
-            <Button asChild variant="ghost">
-              <Link href="/blogs">記事一覧</Link>
-            </Button>
-            <ThemeToggle />
-          </nav>
-        </div>
       </div>
-    </header>
+    </nav>
   );
-}
+};

@@ -3,10 +3,10 @@ description: TypeScript、Next.js App Router、React、Shadcn UI、Tailwindを�
 globs: src/**/*.{ts,tsx}
 alwaysApply: false
 ---
-# プロジェクトルール
+# プロジェクトルール（静的サイト対応版）
 
 ## 役割
-あなたはTypeScript、Node.js、Next.js App Router、React、Shadcn UI、Radix UI、Tailwind、Supabaseの専門家です。
+あなたはTypeScript、Node.js、Next.js App Router、React、Shadcn UI、Radix UI、Tailwind、Supabaseの専門家です。静的サイト向けにNext.jsの静的生成（SSG）を活用し、サーバーサイド処理を最小化します。
 
 ## 主な原則
 - 簡潔で技術的なTypeScriptコードを書き、正確な例を含める。
@@ -14,9 +14,7 @@ alwaysApply: false
 - コードの重複を避け、反復とモジュール化を優先。
 - 変数名には補助動詞を使用（例: `isLoading`, `hasError`）。
 - ファイル構成: コンポーネントのエクスポート、サブコンポーネント、ヘルパー、静的コンテンツ、型を分離。
-- バグの原因を発見しやすいよう適宜`console.log`でデバッグコードを挿入。
-- `users`テーブルはClerk経由でのユーザー登録時にユーザーを一意に決めるもので、その後は基本参照しない。
-- 非同期で返されるパラメータは必ず`await`で解決し、オブジェクトの分割代入を用いて必要なプロパティを抽出。
+- 非同期処理はビルド時に解決し、ランタイムでの`await`を避ける。
 - デザインをシックな雰囲気で統一（例: ダークトーン、ミニマルな配色）。
 - デザインに言及していない場合はデザインを勝手に変えない。
 
@@ -44,37 +42,36 @@ alwaysApply: false
 - Shadcn UIの最新コンポーネントを優先。
 
 ## パフォーマンス最適化
-- `use client`、`useEffect`、`setState`を最小限にし、React Server Components（RSC）を優先。
-- クライアントコンポーネントは`Suspense`でラップし、フォールバックを指定。
-- 非クリティカルなコンポーネントには動的ロードを使用。
+- `use client`や`useEffect`を極力避け、静的生成（SSG）を優先。
+- データは`getStaticProps`または静的ファイル（JSONなど）から取得。
+- 非クリティカルなコンポーネントには動的ロード（`next/dynamic`）を使用し、`ssr: false`を指定。
 - 画像最適化:
   - WebP形式を使用。
-  - サイズデータを指定（`width`、`height`）。
+  - サイズデータを指定（`width`, `height`）。
   - 遅延ロードをデフォルト（`loading="lazy"`）。
-- Next.js 15のPartial Prerendering（PPR）を活用し、静的/動的コンテンツを分離。
+- Next.js 15のPartial Prerendering（PPR）は静的サイトでは使用せず、完全な静的出力に依存。
 
 ## 主要な規約
 - URL検索パラメータの状態管理:
-  - デフォルトでNext.jsの`useSearchParams`を使用。
-  - 複雑な型安全パースが必要な場合に限り`nuqs`を採用。
+  - 静的サイトでは動的な検索パラメータをサポートせず、固定ページとして生成。
+  - 必要に応じてクライアントサイドで軽量な状態管理（例: `useState`）を使用。
 - Web Vitals（LCP、CLS、INP）を最適化（FIDは廃止）。
 - `use client`の使用ルール:
-  - サーバーコンポーネントとNext.js SSRを優先。
-  - Web APIアクセス（例: `window`）や動的UIが必要な小さなコンポーネントでのみ使用。
-  - データ取得はServer ComponentsまたはServer Actionsで優先し、クライアント側での取得は動的更新に限定。
-- React 19の新機能（例: `use`フック、改良された`Suspense`）を活用。
+  - 必要最小限に限定（例: ブラウザAPIに依存する場合のみ）。
+  - データ取得はビルド時に完結し、クライアントサイドでの取得は避ける。
+- React 19の新機能のうち、静的生成と互換性のあるもの（例: 改良されたSuspense）を活用。
 
 ## Next.jsドキュメントの遵守
-- データ取得、レンダリング、ルーティングはNext.js公式ドキュメント（最新版）に従う。
-- Server Actionsを活用しつつ、必要に応じてAPIルートを併用。
+- データ取得は`getStaticProps`または`getStaticPaths`を使用し、Next.js公式ドキュメント（最新版）に従う。
+- Server ActionsやAPIルートは使用せず、静的ファイル生成に依存。
 
 ## ディレクトリ構成
+
 src/
 ├── app/
 │   ├── user-list/
-│   │   ├── page.tsx - コンテナを呼び出すだけのシンプルなページ
-│   │   ├── container.tsx - データ取得とロジック処理を担当
-│   │   └── actions.ts - ページ固有のServer Actions
+│   │   ├── page.tsx - 静的データを表示するシンプルなページ
+│   │   ├── container.tsx - ビルド時にデータを取得しロジック処理を担当
 │   ├── page.tsx
 │   └── layout.tsx
 ├── components/
@@ -85,12 +82,21 @@ src/
 │   │   ├── UserListView.tsx - containerから受け取ったpropsで表示するメインコンポーネント
 │   │   ├── UserCard.tsx
 │   │   ├── FilterBar.tsx
-├── hooks/ - アプリ全体で使用するカスタムフック
+├── hooks/ - クライアントサイドでのみ使用するカスタムフック（最小限）
 ├── lib/ - 外部ライブラリ関連の設定とラッパー
-│   ├── api.ts - API関連のユーティリティ
-│   ├── auth.ts - 認証関連
+│   ├── data.ts - 静的データ取得用のユーティリティ
+│   ├── auth.ts - 認証関連（静的サイトでは最小限）
 ├── utils/ - ユーティリティ関数
 ├── types/ - 型定義
-├── middleware.ts
+├── static/ - 静的データ（JSON、画像など）
 
-
+## 静的サイト向けの追加ルール
+- データ取得:
+  - Supabaseや外部APIへの依存を避け、ビルド時に静的データ（例: JSONファイル）を生成。
+  - `getStaticProps`でデータを取得し、ページに埋め込む。
+- 動的機能:
+  - 動的UIが必要な場合は、`use client`を付けた小さなコンポーネントに限定。
+  - クライアントサイドでのデータ取得は行わず、静的データを前提とする。
+- ビルド設定:
+  - `next.config.js`で`output: 'export'`を設定し、静的サイトとして出力。
+  - `next build && next export`でHTML/CSS/JSファイルを生成。

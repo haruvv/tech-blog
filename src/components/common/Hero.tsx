@@ -51,7 +51,7 @@ export const Hero = () => {
               variant="outline"
               className="rounded-full px-8 border-2 h-12"
             >
-              <Link href="/about">詳細を見る</Link>
+              <Link href="/about">このブログについて</Link>
             </Button>
           </motion.div>
         </motion.div>

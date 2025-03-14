@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "@/styles/BlogContent.module.css";
 
 interface BlogContentProps {
@@ -10,6 +10,7 @@ interface BlogContentProps {
 export const BlogContent: React.FC<BlogContentProps> = ({ content }) => {
   // クライアントサイドでのみコンテンツを表示するためのstate
   const [mounted, setMounted] = useState(false);
+  const iframelyScriptRef = useRef<HTMLScriptElement | null>(null);
 
   // クライアントサイドでマウント後にコンテンツを表示
   useEffect(() => {
@@ -18,36 +19,34 @@ export const BlogContent: React.FC<BlogContentProps> = ({ content }) => {
 
   // iframelyのスクリプトを読み込む
   useEffect(() => {
-    if (mounted && content.includes("iframely")) {
+    if (mounted && content.includes("iframely") && !iframelyScriptRef.current) {
       const script = document.createElement("script");
       script.src = "//cdn.iframe.ly/embed.js";
       script.async = true;
       script.charset = "utf-8";
+
       document.body.appendChild(script);
+      iframelyScriptRef.current = script;
 
       return () => {
-        document.body.removeChild(script);
+        if (
+          iframelyScriptRef.current &&
+          document.body.contains(iframelyScriptRef.current)
+        ) {
+          document.body.removeChild(iframelyScriptRef.current);
+          iframelyScriptRef.current = null;
+        }
       };
     }
   }, [mounted, content]);
 
-  // HTMLをクライアントサイドのみでレンダリング
-  const renderContent = () => {
-    if (!mounted) return null;
-
-    return (
-      <div
-        className={styles.content}
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
-    );
-  };
-
   return (
     <div className="blog-content-container">
-      {/* マウント後に実際のコンテンツを表示 */}
       {mounted ? (
-        renderContent()
+        <div
+          className={styles.content}
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
       ) : (
         // スケルトンローダー
         <div className={styles.skeletonContainer}>

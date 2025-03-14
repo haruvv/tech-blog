@@ -9,19 +9,19 @@
 
 :root {
   /* カラーパレット - 明確な目的のある配色 */
-  --background-main: #f5f5f5;
+  --background-main: #f8f8f8;
   --card-background: #ffffff;
-  --text-primary: #333333;
-  --text-secondary: #555555;
-  --text-muted: #777777;
+  --text-primary: #2d2d2d;
+  --text-secondary: #444444;
+  --text-muted: #666666;
   --border-light: #e5e5e5;
   --border-medium: #d0d0d0;
 
   /* アクセントカラー - モノトーンに統一 */
-  --accent-primary: #5f5959;
-  --accent-secondary: #707070;
-  --accent-tertiary: #9c9c9c;
-  --accent-highlight: #585858;
+  --accent-primary: #3e3e3e;
+  --accent-secondary: #505050;
+  --accent-tertiary: #777777;
+  --accent-highlight: #222222;
 
   /* シャドウ */
   --shadow-light: rgba(0, 0, 0, 0.04);

@@ -86,7 +86,7 @@ export const LatestArticles = ({ blogs }: LatestArticlesProps) => {
                     {blog.title}
                   </h3>
                   <div className="mt-4 line-clamp-3 text-muted-foreground">
-                    {blog.content.replace(/<[^>]*>/g, "").substring(0, 150)}...
+                    {blog.content.replace(/<[^>]*>/g, "").substring(0, 100)}...
                   </div>
                   <div className="mt-6 flex items-center text-sm text-primary/80 font-medium group-hover:text-primary transition-colors">
                     <span className="mr-2">続きを読む</span>

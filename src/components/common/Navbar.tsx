@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
 export const Navbar = () => {
   return (
@@ -51,6 +52,7 @@ export const Navbar = () => {
               About
             </Button>
           </Link>
+          <ThemeToggle />
         </div>
       </div>
     </motion.nav>

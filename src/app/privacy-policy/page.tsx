@@ -57,11 +57,19 @@ export default function PrivacyPolicyPage() {
               Analytics」を使用しています。 Google
               Analyticsはトラフィックデータの収集のためにCookieを使用しています。
               このトラフィックデータは匿名で収集されており、個人を特定するものではありません。
+              また、IPアドレスの匿名化を有効にしており、完全なIPアドレスをGoogleサーバーに送信することはありません。
             </p>
             <p className="mt-4">
               Cookieを無効にすることで、Google
               Analyticsによる情報収集を拒否することができます。
               Cookieを無効にする方法は、お使いのブラウザのヘルプをご覧ください。
+            </p>
+            <p className="mt-4">
+              当サイトはDo Not
+              Track（DNT）信号に対応しています。ブラウザのDNT設定が有効になっている場合、
+              Google
+              Analyticsによるトラッキングは行われません。DNTはプライバシー保護のためのブラウザ設定で、
+              ウェブサイトにトラッキングを行わないよう要求する信号を送信します。
             </p>
             <p className="mt-4">
               Google

@@ -246,94 +246,92 @@
   margin: 0 auto;
 }
 
-/* ダークモード対応 */
-@media (prefers-color-scheme: dark) {
-  .content {
-    color: var(--text-primary-dark, #e0e0e0);
-    background-color: var(--card-background-dark, #252525);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
+/* ダークモード対応 - next-themes用 */
+:global(.dark) .content {
+  color: var(--text-primary-dark, #e0e0e0);
+  background-color: var(--card-background-dark, #252525);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
 
-  .content h1 {
-    color: var(--text-primary-dark, #e0e0e0);
-    border-bottom: 2px solid var(--border-light-dark, #333333);
-  }
+:global(.dark) .content h1 {
+  color: var(--text-primary-dark, #e0e0e0);
+  border-bottom: 2px solid var(--border-light-dark, #333333);
+}
 
-  .content h2 {
-    color: var(--accent-primary-dark, #b8b8b8);
-    border-left: 4px solid var(--accent-primary-dark, #b8b8b8);
-  }
+:global(.dark) .content h2 {
+  color: var(--accent-primary-dark, #b8b8b8);
+  border-left: 4px solid var(--accent-primary-dark, #b8b8b8);
+}
 
-  .content h3 {
-    color: var(--text-primary-dark, #e0e0e0);
-  }
+:global(.dark) .content h3 {
+  color: var(--text-primary-dark, #e0e0e0);
+}
 
-  .content h3::before {
-    background-color: var(--accent-secondary-dark, #9c9c9c);
-  }
+:global(.dark) .content h3::before {
+  background-color: var(--accent-secondary-dark, #9c9c9c);
+}
 
-  .content p,
-  .content li {
-    color: var(--text-primary-dark, #e0e0e0);
-  }
+:global(.dark) .content p,
+:global(.dark) .content li {
+  color: var(--text-primary-dark, #e0e0e0);
+}
 
-  .content strong {
-    color: var(--accent-highlight-dark, #c5c5c5);
-  }
+:global(.dark) .content strong {
+  color: var(--accent-highlight-dark, #c5c5c5);
+}
 
-  .content ul li::marker,
-  .content ol li::marker {
-    color: var(--accent-tertiary-dark, #7a7a7a);
-  }
+:global(.dark) .content ul li::marker,
+:global(.dark) .content ol li::marker {
+  color: var(--accent-tertiary-dark, #7a7a7a);
+}
 
-  .content a {
-    color: var(--accent-primary-dark, #b8b8b8);
-    border-bottom: 1px dotted var(--accent-primary-dark, #b8b8b8);
-  }
+:global(.dark) .content a {
+  color: var(--accent-primary-dark, #b8b8b8);
+  border-bottom: 1px dotted var(--accent-primary-dark, #b8b8b8);
+}
 
-  .content a:hover {
-    color: var(--accent-highlight-dark, #c5c5c5);
-    border-bottom: 1px solid var(--accent-highlight-dark, #c5c5c5);
-  }
+:global(.dark) .content a:hover {
+  color: var(--accent-highlight-dark, #c5c5c5);
+  border-bottom: 1px solid var(--accent-highlight-dark, #c5c5c5);
+}
 
-  .content img,
-  .content .iframely-responsive iframe {
-    border: 1px solid var(--border-light-dark, #333333);
-    box-shadow:
-      0 4px 12px rgba(0, 0, 0, 0.2),
-      0 2px 6px rgba(0, 0, 0, 0.1);
-  }
+:global(.dark) .content img,
+:global(.dark) .content .iframely-responsive iframe {
+  border: 1px solid var(--border-light-dark, #333333);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.2),
+    0 2px 6px rgba(0, 0, 0, 0.1);
+}
 
-  .content code {
-    background-color: #2a2a2a;
-    color: var(--text-primary-dark, #e0e0e0);
-  }
+:global(.dark) .content code {
+  background-color: #2a2a2a;
+  color: var(--text-primary-dark, #e0e0e0);
+}
 
-  .content pre {
-    background-color: #2a2a2a;
-    border: 1px solid var(--border-medium-dark, #444444);
-  }
+:global(.dark) .content pre {
+  background-color: #2a2a2a;
+  border: 1px solid var(--border-medium-dark, #444444);
+}
 
-  .content pre code {
-    color: var(--text-primary-dark, #e0e0e0);
-  }
+:global(.dark) .content pre code {
+  color: var(--text-primary-dark, #e0e0e0);
+}
 
-  .content blockquote {
-    border-left: 4px solid var(--accent-tertiary-dark, #7a7a7a);
-    background-color: rgba(150, 150, 150, 0.05);
-    color: var(--text-secondary-dark, #b0b0b0);
-  }
+:global(.dark) .content blockquote {
+  border-left: 4px solid var(--accent-tertiary-dark, #7a7a7a);
+  background-color: rgba(150, 150, 150, 0.05);
+  color: var(--text-secondary-dark, #b0b0b0);
+}
 
-  .content blockquote p {
-    color: var(--text-secondary-dark, #b0b0b0);
-  }
+:global(.dark) .content blockquote p {
+  color: var(--text-secondary-dark, #b0b0b0);
+}
 
-  .skeletonItem {
-    background-color: rgba(75, 85, 99, 0.3);
-  }
+:global(.dark) .skeletonItem {
+  background-color: rgba(75, 85, 99, 0.3);
+}
 
-  .skeletonContainer {
-    background-color: var(--card-background-dark, #252525);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
+:global(.dark) .skeletonContainer {
+  background-color: var(--card-background-dark, #252525);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }

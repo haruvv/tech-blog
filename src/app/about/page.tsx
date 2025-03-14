@@ -1,5 +1,4 @@
 import { Container } from "@/components/common/Container";
-import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -7,7 +6,7 @@ import Link from "next/link";
 
 export const metadata = {
   title: "About | Haru Tech Blog",
-  description: "Haru Tech Blogの運営者とブログの目的についてご紹介します",
+  description: "Haru Tech Blogの運営者とブログの目的についての紹介",
 };
 
 export default function AboutPage() {
@@ -26,9 +25,10 @@ export default function AboutPage() {
                 src="/images/profile.jpg"
                 alt="haru"
                 fill
-                className="object-cover"
+                className="object-cover filter dark:saturate-[0.65] brightness-[1.02] contrast-[0.95] grayscale-[0.1]"
                 sizes="(max-width: 768px) 100vw, 160px"
               />
+              <div className="absolute inset-0 bg-background/5 mix-blend-overlay"></div>
             </div>
             <div className="flex-1 text-center md:text-left">
               <h2 className="text-3xl font-bold mb-2">Haru</h2>

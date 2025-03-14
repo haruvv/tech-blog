@@ -10,7 +10,6 @@ declare global {
   }
   interface Navigator {
     globalPrivacyControl?: boolean;
-    doNotTrack?: string;
   }
 }
 
@@ -18,7 +17,7 @@ export function GoogleAnalytics({ measurementId }: { measurementId: string }) {
   const [respectDNT, setRespectDNT] = useState(false);
 
   useEffect(() => {
-    // DoNotTrack設定を確認（navigatorプロパティのみを使用）
+    // DoNotTrack設定を確認（navigatorプロパティを安全に使用）
     const dntEnabled =
       navigator.doNotTrack === "1" || navigator.doNotTrack === "yes";
 

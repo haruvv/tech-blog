@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { AnalyticsProvider } from "@/components/analytics/AnalyticsProvider";
 import { CookieConsent } from "@/components/common/CookieConsent";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -128,12 +129,14 @@ export default function RootLayout({
         >
           {gaId && <GoogleAnalytics measurementId={gaId} />}
           <WebsiteJsonLd />
-          <AnalyticsProvider>
-            <Navbar />
-            <main className="flex-1">{children}</main>
-            <Footer />
-            <CookieConsent />
-          </AnalyticsProvider>
+          <Suspense fallback={null}>
+            <AnalyticsProvider>
+              <Navbar />
+              <main className="flex-1">{children}</main>
+              <Footer />
+              <CookieConsent />
+            </AnalyticsProvider>
+          </Suspense>
         </ThemeProvider>
       </body>
     </html>

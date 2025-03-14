@@ -16,9 +16,94 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TechBlog - 技術ブログ",
-  description: "最新の技術トレンドや開発に関する情報を発信するブログです",
+  title: {
+    default: "Haru Tech Blog - Web開発の技術ブログ",
+    template: "%s | Haru Tech Blog",
+  },
+  description:
+    "Web開発やプログラミング学習に関する情報を初心者目線で発信するブログです。TypeScript、React、Next.js、Laravelなどの技術トピックを中心に解説しています。",
+  keywords: [
+    "Web開発",
+    "プログラミング",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Laravel",
+    "テックブログ",
+  ],
+  authors: [{ name: "Haru", url: "https://github.com/haruvv" }],
+  creator: "Haru",
+  publisher: "Haru Tech Blog",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL("https://haruvv.github.io"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Haru Tech Blog - Web開発の技術ブログ",
+    description:
+      "Web開発やプログラミング学習に関する情報を初心者目線で発信するブログです。TypeScript、React、Next.js、Laravelなどの技術トピックを中心に解説しています。",
+    url: "https://haruvv.github.io",
+    siteName: "Haru Tech Blog",
+    locale: "ja_JP",
+    type: "website",
+    images: [
+      {
+        url: "/images/profile.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Haru Tech Blog",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Haru Tech Blog - Web開発の技術ブログ",
+    description:
+      "Web開発やプログラミング学習に関する情報を初心者目線で発信するブログです。",
+    images: ["/images/profile.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
+
+// JSON-LDを追加するコンポーネント
+function WebsiteJsonLd() {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Haru Tech Blog",
+          url: "https://haruvv.github.io",
+          description:
+            "Web開発やプログラミング学習に関する情報を初心者目線で発信するブログです。",
+          author: {
+            "@type": "Person",
+            name: "Haru",
+            url: "https://github.com/haruvv",
+          },
+          inLanguage: "ja-JP",
+        }),
+      }}
+    />
+  );
+}
 
 export default function RootLayout({
   children,
@@ -36,6 +121,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <WebsiteJsonLd />
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />

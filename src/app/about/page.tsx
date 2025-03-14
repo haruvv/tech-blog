@@ -3,15 +3,64 @@ import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "About | Haru Tech Blog",
-  description: "Haru Tech Blogの運営者とブログの目的についての紹介",
+  description:
+    "Haru Tech Blogの運営者とブログの目的についての紹介。Web開発者Haruのプロフィールと技術スタック、ブログのコンセプトをご覧ください。",
+  openGraph: {
+    title: "About | Haru Tech Blog",
+    description:
+      "Haru Tech Blogの運営者とブログの目的についての紹介。Web開発者Haruのプロフィールと技術スタック、ブログのコンセプトをご覧ください。",
+    type: "website",
+    url: "/about",
+    images: [
+      {
+        url: "/images/profile.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Haru Tech Blog",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About | Haru Tech Blog",
+    description:
+      "Haru Tech Blogの運営者とブログの目的についての紹介。Web開発者Haruのプロフィールと技術スタック、ブログのコンセプトをご覧ください。",
+    images: ["/images/profile.jpg"],
+  },
 };
+
+// JSONLDを追加するコンポーネント
+function AboutJsonLd() {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ProfilePage",
+          name: "Haru Tech Blog About Page",
+          mainEntity: {
+            "@type": "Person",
+            name: "Haru",
+            description: "Web開発者 / テックブロガー",
+            knowsAbout: ["TypeScript", "React", "Next.js", "Laravel"],
+            url: "https://haruvv.github.io",
+            sameAs: ["https://github.com/haruvv"],
+          },
+        }),
+      }}
+    />
+  );
+}
 
 export default function AboutPage() {
   return (
     <Container>
+      <AboutJsonLd />
       <div className="py-12 md:py-16 lg:py-20">
         <h1 className="text-4xl font-bold tracking-tight mb-8 md:text-5xl">
           About
@@ -25,6 +74,7 @@ export default function AboutPage() {
                 src="/images/profile.jpg"
                 alt="haru"
                 fill
+                priority
                 className="object-cover filter dark:saturate-[0.65] brightness-[1.02] contrast-[0.95] grayscale-[0.1]"
                 sizes="(max-width: 768px) 100vw, 160px"
               />

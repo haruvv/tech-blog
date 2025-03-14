@@ -5,6 +5,7 @@ import { Container } from "@/components/common/Container";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, Clock, ArrowRight } from "lucide-react";
 import { getBlogById, getBlogs } from "@/lib/microcms";
+import { BlogContent } from "@/components/common/BlogContent";
 
 // microCMSのブログ型を定義
 type Blog = {
@@ -123,21 +124,9 @@ export default async function BlogDetailPage({ params }: Props) {
             </div>
           </div>
 
-          {/* 記事コンテンツ */}
+          {/* 記事コンテンツ - クライアントコンポーネントを使用 */}
           <div className="p-8">
-            <article
-              className="prose prose-neutral dark:prose-invert max-w-none 
-              prose-h1:text-3xl prose-h1:font-bold prose-h1:tracking-tight prose-h1:mt-8 prose-h1:mb-4
-              prose-h2:text-2xl prose-h2:font-semibold prose-h2:tracking-tight prose-h2:mt-6 prose-h2:mb-3
-              prose-h3:text-xl prose-h3:font-semibold prose-h3:mt-4 prose-h3:mb-2
-              prose-p:my-3 prose-p:leading-relaxed
-              prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-              prose-img:rounded-lg prose-img:shadow-md
-              prose-ul:my-4 prose-ol:my-4 prose-li:my-1
-              prose-strong:font-bold prose-strong:text-primary/80
-            "
-              dangerouslySetInnerHTML={{ __html: blog.content }}
-            />
+            <BlogContent content={blog.content} />
           </div>
         </div>
 

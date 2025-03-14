@@ -1,0 +1,93 @@
+/* 既存のglobals.cssファイルに追加 */
+
+/* ブログコンテンツ用のグローバルスタイル */
+.global-blog-content h1 {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.025em;
+}
+
+.global-blog-content h2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.025em;
+}
+
+.global-blog-content h3 {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.global-blog-content p {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.7;
+}
+
+.global-blog-content a {
+  color: var(--color-primary, #2563eb);
+  text-decoration: none;
+}
+
+.global-blog-content a:hover {
+  text-decoration: underline;
+}
+
+.global-blog-content img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.global-blog-content ul,
+.global-blog-content ol {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.global-blog-content li {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.global-blog-content strong {
+  font-weight: 700;
+  color: inherit;
+}
+
+/* iframely */
+.global-blog-content .iframely-embed {
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+
+.global-blog-content .iframely-responsive {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 56.25%;
+}
+
+.global-blog-content .iframely-responsive iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+}

@@ -4,6 +4,8 @@ import "./globals.css";
 import { Navbar } from "@/components/common/Navbar";
 import { Footer } from "@/components/common/Footer";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
+import { AnalyticsProvider } from "@/components/analytics/AnalyticsProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -110,6 +112,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "";
+
   return (
     <html lang="ja" suppressHydrationWarning>
       <body
@@ -121,10 +125,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          {gaId && <GoogleAnalytics measurementId={gaId} />}
           <WebsiteJsonLd />
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <AnalyticsProvider>
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </AnalyticsProvider>
         </ThemeProvider>
       </body>
     </html>

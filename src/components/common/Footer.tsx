@@ -20,6 +20,12 @@ export function Footer() {
           >
             記事一覧
           </Link>
+          <Link
+            href="/privacy-policy"
+            className="text-sm text-muted-foreground hover:text-foreground"
+          >
+            プライバシーポリシー
+          </Link>
         </div>
       </div>
     </footer>

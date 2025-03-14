@@ -6,6 +6,7 @@ import { Footer } from "@/components/common/Footer";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { AnalyticsProvider } from "@/components/analytics/AnalyticsProvider";
+import { CookieConsent } from "@/components/common/CookieConsent";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -131,6 +132,7 @@ export default function RootLayout({
             <Navbar />
             <main className="flex-1">{children}</main>
             <Footer />
+            <CookieConsent />
           </AnalyticsProvider>
         </ThemeProvider>
       </body>

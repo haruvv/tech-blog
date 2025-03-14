@@ -30,10 +30,12 @@ export const Navbar = () => {
             strokeLinejoin="round"
             className="text-primary"
           >
-            <path d="M3 3v18h18" />
-            <path d="m19 9-5 5-4-4-3 3" />
+            <path d="M8 2c4 0 8 1.7 8 6l-.2.4C18.3 7.8 20 9 20 12c0 1.3-.4 2.3-1 3" />
+            <path d="M16 18c-1.9 1.5-4.3 2-7.5 2A9.1 9.1 0 0 1 4 22" />
+            <path d="M4 14.5c0-1.6.4-2.8 1-3.7" />
+            <path d="M2 12a10 10 0 0 0 16.5-8" />
           </svg>
-          Tech Blog
+          Haru Tech Blog
         </Link>
         <div className="flex items-center gap-2">
           <Link href="/blogs">

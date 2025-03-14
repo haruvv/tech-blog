@@ -22,7 +22,7 @@ export const Hero = () => {
             transition={{ delay: 0.3, duration: 0.5 }}
             className="text-4xl md:text-6xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80 leading-tight"
           >
-            Welcome to Tech Blog
+            Haru Tech Blog
           </motion.h1>
           <motion.p
             initial={{ y: 20 }}
@@ -30,7 +30,7 @@ export const Hero = () => {
             transition={{ delay: 0.5, duration: 0.5 }}
             className="text-xl md:text-2xl text-foreground/80 mb-12 max-w-2xl mx-auto leading-relaxed"
           >
-            テクノロジーに関する最新の情報や知見を共有するプラットフォーム
+            Web開発を学ぶ過程で得た知識や経験を共有するブログです
           </motion.p>
           <motion.div
             initial={{ opacity: 0 }}

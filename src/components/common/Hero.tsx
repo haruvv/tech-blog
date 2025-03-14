@@ -28,9 +28,9 @@ export const Hero = () => {
             initial={{ y: 20 }}
             animate={{ y: 0 }}
             transition={{ delay: 0.5, duration: 0.5 }}
-            className="text-xl md:text-2xl text-foreground/80 mb-12 max-w-2xl mx-auto leading-relaxed"
+            className="text-base md:text-lg text-foreground/80 mb-12 max-w-2xl mx-auto leading-relaxed"
           >
-            Web開発を学ぶ過程で得た知識や経験を共有するブログです
+            テクノロジーに関する最新の情報や知見を共有するプラットフォーム
           </motion.p>
           <motion.div
             initial={{ opacity: 0 }}

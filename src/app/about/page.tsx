@@ -42,15 +42,20 @@ export default function AboutPage() {
                 <Badge variant="secondary">Laravel</Badge>
               </div>
               <p className="text-muted-foreground mb-6">
-                こんにちは、Haruです。Web開発を学び始めて1年目のエンジニアです。現在はフロントエンド開発を中心に学習しています。
-                特に最近ではReactやNext.jsといった技術に興味があり、日々勉強を続けています。
-                学生時代にはプログラミングの基礎や人工知能についても学びました。
-                このブログでは、学習過程で学んだことや、躓いたポイント、解決方法などを共有していきます。
-                同じように学習中の方々の参考になれば嬉しいです。
+                こんにちは、Haruです。Web開発を始めて1年目のエンジニアです。
+                <br />
+                現在はフロントエンドを中心に学んでいて、特にReactやNext.jsに興味があります。
+                <br />
+                毎日少しずつできることが増えていくのが楽しくて、日々開発を進めながら試行錯誤しています。
+                <br />
+                このブログでは、自分が学んだことや、つまずいたポイントとその解決法などを記録していきます。
+                <br />
+                同じように学習中の方々の役に立てば嬉しいです。
               </p>
+
               <div className="flex gap-4 justify-center md:justify-start">
                 <Button asChild variant="outline" size="sm">
-                  <Link href="https://github.com/yourusername" target="_blank">
+                  <Link href="https://github.com/haruvv" target="_blank">
                     <svg
                       className="w-4 h-4 mr-2"
                       viewBox="0 0 24 24"
@@ -65,8 +70,8 @@ export default function AboutPage() {
                     GitHub
                   </Link>
                 </Button>
-                <Button asChild variant="outline" size="sm">
-                  <Link href="https://twitter.com/yourusername" target="_blank">
+                {/* <Button asChild variant="outline" size="sm">
+                  <Link href="https://twitter.com/username" target="_blank">
                     <svg
                       className="w-4 h-4 mr-2"
                       viewBox="0 0 24 24"
@@ -80,7 +85,7 @@ export default function AboutPage() {
                     </svg>
                     Twitter
                   </Link>
-                </Button>
+                </Button> */}
               </div>
             </div>
           </div>
@@ -94,7 +99,7 @@ export default function AboutPage() {
           <div className="grid gap-8 md:grid-cols-2">
             <div className="space-y-4">
               <p className="text-muted-foreground">
-                当ブログは、私がWeb開発を学ぶ過程で得た知識や経験を共有するブログです。
+                当ブログは私がWeb開発を学ぶ過程で得た知識や経験を共有するブログです。
                 特にフロントエンド開発に関する内容が中心になりますが、プログラミング学習全般についても
                 書いていく予定です。
               </p>
@@ -117,8 +122,8 @@ export default function AboutPage() {
                 <li className="flex items-start gap-3">
                   <span className="inline-block w-2 h-2 bg-primary rounded-full mt-2"></span>
                   <span>
-                    <strong className="text-foreground">実践的な学習</strong> -
-                    実際に手を動かして学べる内容を提供します
+                    <strong className="text-foreground">技術トレンド</strong> -
+                    稚拙ながらも技術トレンドを紹介します
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
@@ -126,13 +131,6 @@ export default function AboutPage() {
                   <span>
                     <strong className="text-foreground">学習の記録</strong> -
                     自分の成長過程も含めて共有します
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="inline-block w-2 h-2 bg-primary rounded-full mt-2"></span>
-                  <span>
-                    <strong className="text-foreground">学習リソース</strong> -
-                    役立つ学習教材や参考サイトを紹介します
                   </span>
                 </li>
               </ul>
@@ -176,7 +174,7 @@ export default function AboutPage() {
         </div>
 
         {/* 自己PR */}
-        <div className="mb-16 bg-card p-8 rounded-xl border">
+        {/* <div className="mb-16 bg-card p-8 rounded-xl border">
           <h2 className="text-2xl font-semibold mb-6">自己PR</h2>
           <div className="space-y-4 text-muted-foreground">
             <p>
@@ -194,10 +192,10 @@ export default function AboutPage() {
               実際に役立つアプリケーションを作れるようになることが目標です。
             </p>
           </div>
-        </div>
+        </div> */}
 
         {/* お問い合わせセクション */}
-        <div className="text-center bg-card p-8 rounded-xl border">
+        {/* <div className="text-center bg-card p-8 rounded-xl border">
           <h2 className="text-2xl font-semibold mb-4">お問い合わせ</h2>
           <p className="text-muted-foreground mb-6">
             ブログに関するご質問、記事のリクエスト、間違いの指摘など、お気軽にご連絡ください。
@@ -206,7 +204,7 @@ export default function AboutPage() {
           <Button asChild size="lg" className="rounded-full px-8">
             <Link href="/contact">お問い合わせページへ</Link>
           </Button>
-        </div>
+        </div> */}
       </div>
     </Container>
   );

@@ -65,14 +65,14 @@ export default async function BlogDetailPage({ params }: Props) {
   const formattedDate = formatDate(blog.publishedAt);
 
   return (
-    <div className="bg-muted/30 py-16 min-h-screen">
+    <div className="bg-muted/30 py-8 md:py-16 min-h-screen">
       <Container className="max-w-4xl">
         <div className="bg-background rounded-xl shadow-lg overflow-hidden mb-8">
           {/* ヘッダー部分 */}
-          <div className="relative p-8 border-b">
+          <div className="relative p-4 sm:p-6 md:p-8 border-b">
             {/* アイキャッチ画像 */}
             {blog.eyecatch && (
-              <div className="relative w-full h-64 mb-6">
+              <div className="relative w-full h-48 md:h-64 mb-4 md:mb-6">
                 <Image
                   src={`${blog.eyecatch.url}?w=1200&h=630&fit=crop`}
                   alt={blog.title}
@@ -86,38 +86,38 @@ export default async function BlogDetailPage({ params }: Props) {
             <Button
               asChild
               variant="ghost"
-              className="group mb-6 flex items-center gap-1 p-0 text-muted-foreground hover:text-primary"
+              className="group mb-4 md:mb-6 flex items-center gap-1 p-0 text-muted-foreground hover:text-primary"
             >
               <Link href="/blogs">
-                <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-                <span>記事一覧に戻る</span>
+                <ArrowLeft className="h-3 w-3 md:h-4 md:w-4 transition-transform group-hover:-translate-x-1" />
+                <span className="text-sm md:text-base">記事一覧に戻る</span>
               </Link>
             </Button>
 
-            <div className="space-y-4">
+            <div className="space-y-3 md:space-y-4">
               {/* アクセントバーとラベル */}
               <div className="flex items-center gap-2">
-                <div className="h-6 w-1.5 bg-primary rounded-full" />
-                <span className="text-sm font-medium text-primary uppercase tracking-wider">
+                <div className="h-5 md:h-6 w-1.5 bg-primary rounded-full" />
+                <span className="text-xs md:text-sm font-medium text-primary uppercase tracking-wider">
                   ARTICLE
                 </span>
               </div>
 
               {/* タイトル */}
-              <h1 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+              <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight">
                 {blog.title}
               </h1>
 
               {/* メタ情報 */}
-              <div className="flex flex-wrap items-center gap-4 text-muted-foreground">
+              <div className="flex flex-wrap items-center gap-3 md:gap-4 text-muted-foreground text-xs md:text-sm">
                 {formattedDate && (
                   <div className="flex items-center gap-1">
-                    <Calendar className="h-4 w-4" />
+                    <Calendar className="h-3 w-3 md:h-4 md:w-4" />
                     <span>{formattedDate}</span>
                   </div>
                 )}
                 <div className="flex items-center gap-1">
-                  <Clock className="h-4 w-4" />
+                  <Clock className="h-3 w-3 md:h-4 md:w-4" />
                   <span>約{readingTime}分で読めます</span>
                 </div>
               </div>
@@ -125,26 +125,29 @@ export default async function BlogDetailPage({ params }: Props) {
           </div>
 
           {/* 記事コンテンツ - クライアントコンポーネントを使用 */}
-          <div className="p-8">
+          <div className="p-4 sm:p-6 md:p-8">
             <BlogContent content={blog.content} />
           </div>
         </div>
 
         {/* 関連セクション */}
-        <div className="bg-background rounded-xl shadow-md p-8 mt-12">
+        <div className="bg-background rounded-xl shadow-md p-4 sm:p-6 md:p-8 mt-8 md:mt-12">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
-              <h3 className="text-xl font-semibold mb-2">
+              <h3 className="text-lg md:text-xl font-semibold mb-2">
                 他の記事もチェックしませんか？
               </h3>
-              <p className="text-muted-foreground">
+              <p className="text-sm md:text-base text-muted-foreground">
                 もっと多くの技術情報や開発トピックをご覧いただけます
               </p>
             </div>
-            <Button asChild className="rounded-full px-6">
+            <Button
+              asChild
+              className="rounded-full px-5 md:px-6 py-2 text-sm md:text-base"
+            >
               <Link href="/blogs" className="flex items-center gap-2">
                 記事一覧を見る
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-3 w-3 md:h-4 md:w-4" />
               </Link>
             </Button>
           </div>

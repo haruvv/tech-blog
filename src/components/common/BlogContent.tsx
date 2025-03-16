@@ -10,12 +10,41 @@ interface BlogContentProps {
 export const BlogContent: React.FC<BlogContentProps> = ({ content }) => {
   // クライアントサイドでのみコンテンツを表示するためのstate
   const [mounted, setMounted] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
   const iframelyScriptRef = useRef<HTMLScriptElement | null>(null);
 
   // クライアントサイドでマウント後にコンテンツを表示
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // コンテンツがマウントされた後にテーブルの処理を行う
+  useEffect(() => {
+    if (mounted && contentRef.current) {
+      // テーブルにwrapperを追加して横スクロール可能にする
+      const tables = contentRef.current.querySelectorAll("table");
+      tables.forEach((table) => {
+        if (!table.parentElement?.classList.contains(styles.tableWrapper)) {
+          const wrapper = document.createElement("div");
+          wrapper.className = styles.tableWrapper;
+          table.parentNode?.insertBefore(wrapper, table);
+          wrapper.appendChild(table);
+        }
+      });
+
+      // リストの表示を確認
+      const lists = contentRef.current.querySelectorAll("ul, ol");
+      lists.forEach((list) => {
+        // リストアイテムにclass名を追加
+        const items = list.querySelectorAll("li");
+        items.forEach((item) => {
+          if (!item.classList.contains("list-item")) {
+            item.classList.add("list-item");
+          }
+        });
+      });
+    }
+  }, [mounted]);
 
   // iframelyのスクリプトを読み込む
   useEffect(() => {
@@ -44,6 +73,7 @@ export const BlogContent: React.FC<BlogContentProps> = ({ content }) => {
     <div className="blog-content-container">
       {mounted ? (
         <div
+          ref={contentRef}
           className={styles.content}
           dangerouslySetInnerHTML={{ __html: content }}
         />

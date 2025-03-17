@@ -245,16 +245,21 @@ export default function AboutPage() {
         </div> */}
 
         {/* お問い合わせセクション */}
-        {/* <div className="text-center bg-card p-8 rounded-xl border">
+        <div className="text-center bg-card p-8 rounded-xl border">
           <h2 className="text-2xl font-semibold mb-4">お問い合わせ</h2>
           <p className="text-muted-foreground mb-6">
-            ブログに関するご質問、記事のリクエスト、間違いの指摘など、お気軽にご連絡ください。
+            ブログに関するご質問、記事のリクエスト、間違いの指摘、またお仕事に関するご連絡など、お気軽にご連絡ください。
             一緒に学び、成長していきましょう！
           </p>
           <Button asChild size="lg" className="rounded-full px-8">
-            <Link href="/contact">お問い合わせページへ</Link>
+            <a
+              href="mailto:harutech.contact@gmail.com"
+              rel="noopener noreferrer"
+            >
+              Gmailで連絡する
+            </a>
           </Button>
-        </div> */}
+        </div>
       </div>
     </Container>
   );

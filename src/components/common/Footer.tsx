@@ -21,6 +21,18 @@ export function Footer() {
             記事一覧
           </Link>
           <Link
+            href="/about"
+            className="text-sm text-muted-foreground hover:text-foreground"
+          >
+            About
+          </Link>
+          <Link
+            href="/contact"
+            className="text-sm text-muted-foreground hover:text-foreground"
+          >
+            お問い合わせ
+          </Link>
+          <Link
             href="/privacy-policy"
             className="text-sm text-muted-foreground hover:text-foreground"
           >

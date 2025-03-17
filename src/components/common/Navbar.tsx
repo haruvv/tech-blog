@@ -55,6 +55,14 @@ export const Navbar = () => {
               About
             </Button>
           </Link>
+          <Link href="/contact">
+            <Button
+              variant="ghost"
+              className="hover:bg-primary/10 hover:text-primary"
+            >
+              Contact
+            </Button>
+          </Link>
           <ThemeToggle />
         </div>
       </div>

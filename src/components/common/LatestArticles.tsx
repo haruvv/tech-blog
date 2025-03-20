@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { AnimatedButton } from "@/components/ui/button";
 import { Container } from "@/components/common/Container";
@@ -11,11 +10,6 @@ type Blog = {
   id: string;
   title: string;
   content: string;
-  thumbnail?: {
-    url: string;
-    width: number;
-    height: number;
-  };
   publishedAt?: string;
 };
 
@@ -88,22 +82,7 @@ export const LatestArticles = ({ blogs }: LatestArticlesProps) => {
                   transitionDelay: `${index * 0.1}s`,
                 }}
               >
-                <div className="relative aspect-[16/9] w-full">
-                  {blog.thumbnail ? (
-                    <Image
-                      src={blog.thumbnail.url}
-                      alt={`${blog.title}のサムネイル画像`}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover"
-                      priority={index < 3}
-                    />
-                  ) : (
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary/30 to-primary/10 flex items-center justify-center">
-                      <span className="text-4xl opacity-50">📝</span>
-                    </div>
-                  )}
-                </div>
+                <div className="h-2 bg-gradient-to-r from-primary to-primary/30 w-full"></div>
                 <Link href={`/blogs/${blog.id}`} className="group block p-6">
                   <h3 className="line-clamp-2 text-xl font-semibold group-hover:text-primary">
                     {blog.title}

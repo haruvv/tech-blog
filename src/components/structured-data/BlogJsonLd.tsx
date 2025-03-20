@@ -3,7 +3,6 @@ type BlogJsonLdProps = {
   description: string;
   publishedAt?: string;
   modifiedAt?: string;
-  imageUrl?: string;
   authorName?: string;
   authorUrl?: string;
   url: string;
@@ -15,7 +14,6 @@ export function BlogJsonLd({
   description,
   publishedAt,
   modifiedAt,
-  imageUrl,
   authorName = "Haru",
   authorUrl = "https://github.com/haruvv",
   url,
@@ -35,7 +33,7 @@ export function BlogJsonLd({
     "@type": "BlogPosting",
     headline: title,
     description: plainDescription,
-    image: imageUrl || defaultImage,
+    image: defaultImage,
     datePublished: publishedAt,
     dateModified: modifiedAt || publishedAt,
     author: {

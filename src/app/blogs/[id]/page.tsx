@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import { Container } from "@/components/common/Container";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, Clock, ArrowRight } from "lucide-react";
@@ -16,11 +15,6 @@ type Blog = {
   title: string;
   content: string;
   publishedAt?: string;
-  eyecatch?: {
-    url: string;
-    width: number;
-    height: number;
-  };
 };
 
 // 静的生成のための設定
@@ -71,10 +65,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description =
     plainTextContent + (plainTextContent.length >= 160 ? "..." : "");
 
-  // アイキャッチ画像のURLを取得
-  const imageUrl = blog.eyecatch
-    ? `${blog.eyecatch.url}?w=1200&h=630&fit=crop`
-    : "/images/profile.jpg";
+  // デフォルトの画像URL
+  const imageUrl = "/images/profile.jpg";
 
   return {
     title: blog.title,
@@ -137,7 +129,6 @@ export default async function BlogDetailPage({ params }: Props) {
         title={blog.title}
         description={blog.content}
         publishedAt={blog.publishedAt}
-        imageUrl={blog.eyecatch?.url}
         url={canonicalUrl}
       />
 
@@ -149,19 +140,6 @@ export default async function BlogDetailPage({ params }: Props) {
           <div className="bg-background rounded-xl shadow-lg overflow-hidden mb-8">
             {/* ヘッダー部分 */}
             <div className="relative p-8 border-b">
-              {/* アイキャッチ画像 */}
-              {blog.eyecatch && (
-                <div className="relative w-full h-64 mb-6">
-                  <Image
-                    src={`${blog.eyecatch.url}?w=1200&h=630&fit=crop`}
-                    alt={blog.title}
-                    fill
-                    className="object-cover rounded-lg"
-                    priority
-                  />
-                </div>
-              )}
-
               <Button
                 asChild
                 variant="ghost"

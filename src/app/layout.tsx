@@ -47,6 +47,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+  },
+  manifest: "/manifest.json",
   openGraph: {
     title: "Haru Tech Blog - Web開発の技術ブログ",
     description:

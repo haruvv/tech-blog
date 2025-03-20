@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="black" stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2">
+  <rect width="24" height="24" fill="black" />
+  <!-- モダンな三角形 -->
+  <path d="M6 8 L18 8 L12 14 Z" stroke="white" fill="none" />
+  <!-- 垂直線 -->
+  <line x1="12" y1="14" x2="12" y2="18" stroke="white" />
+</svg> 

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { AnimatedButton } from "@/components/ui/button";
 import { Container } from "@/components/common/Container";
@@ -10,6 +11,12 @@ type Blog = {
   id: string;
   title: string;
   content: string;
+  thumbnail?: {
+    url: string;
+    width: number;
+    height: number;
+  };
+  publishedAt?: string;
 };
 
 type LatestArticlesProps = {
@@ -61,6 +68,7 @@ export const LatestArticles = ({ blogs }: LatestArticlesProps) => {
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
+                      aria-hidden="true"
                     >
                       <path d="M5 12h14"></path>
                       <path d="m12 5 7 7-7 7"></path>
@@ -80,11 +88,34 @@ export const LatestArticles = ({ blogs }: LatestArticlesProps) => {
                   transitionDelay: `${index * 0.1}s`,
                 }}
               >
-                <div className="h-2 bg-gradient-to-r from-primary to-primary/60" />
+                <div className="relative aspect-[16/9] w-full">
+                  {blog.thumbnail ? (
+                    <Image
+                      src={blog.thumbnail.url}
+                      alt={`${blog.title}のサムネイル画像`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover"
+                      priority={index < 3}
+                    />
+                  ) : (
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/30 to-primary/10 flex items-center justify-center">
+                      <span className="text-4xl opacity-50">📝</span>
+                    </div>
+                  )}
+                </div>
                 <Link href={`/blogs/${blog.id}`} className="group block p-6">
                   <h3 className="line-clamp-2 text-xl font-semibold group-hover:text-primary">
                     {blog.title}
                   </h3>
+                  {blog.publishedAt && (
+                    <time
+                      dateTime={blog.publishedAt}
+                      className="text-sm text-muted-foreground block mt-2"
+                    >
+                      {new Date(blog.publishedAt).toLocaleDateString("ja-JP")}
+                    </time>
+                  )}
                   <div className="mt-4 line-clamp-3 text-muted-foreground">
                     {blog.content.replace(/<[^>]*>/g, "").substring(0, 100)}...
                   </div>
@@ -101,6 +132,7 @@ export const LatestArticles = ({ blogs }: LatestArticlesProps) => {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       className="group-hover:translate-x-1 transition-transform"
+                      aria-hidden="true"
                     >
                       <path d="M5 12h14"></path>
                       <path d="m12 5 7 7-7 7"></path>

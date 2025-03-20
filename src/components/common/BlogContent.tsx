@@ -24,9 +24,12 @@ export const BlogContent: React.FC<BlogContentProps> = ({ content }) => {
       // テーブルにwrapperを追加して横スクロール可能にする
       const tables = contentRef.current.querySelectorAll("table");
       tables.forEach((table) => {
-        if (!table.parentElement?.classList.contains(styles.tableWrapper)) {
+        if (!table.parentElement?.classList.contains("table-wrapper")) {
           const wrapper = document.createElement("div");
-          wrapper.className = styles.tableWrapper;
+          wrapper.className = "table-wrapper";
+          wrapper.style.overflowX = "auto";
+          wrapper.style.width = "100%";
+          wrapper.style.margin = "1.5rem 0";
           table.parentNode?.insertBefore(wrapper, table);
           wrapper.appendChild(table);
         }

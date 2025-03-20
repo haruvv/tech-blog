@@ -4,8 +4,8 @@ import { Mail } from "lucide-react";
 export function Footer() {
   return (
     <footer className="border-t py-8 md:py-12">
-      <div className="container flex flex-col items-center justify-between gap-4 md:flex-row">
-        <div className="flex flex-col items-center md:items-start gap-2">
+      <div className="container px-4 md:px-8 flex flex-col items-center justify-between gap-4 md:flex-row">
+        <div className="flex flex-col items-center md:items-start gap-2 md:pl-4">
           <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
             &copy; {new Date().getFullYear()} TechBlog. All rights reserved.
           </p>
@@ -19,7 +19,7 @@ export function Footer() {
             </a>
           </div>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 md:pr-4">
           <Link
             href="/"
             className="text-sm text-muted-foreground hover:text-foreground"
